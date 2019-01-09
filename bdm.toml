@@ -1,0 +1,12 @@
+[visualization]
+export = true
+export_interval = 2
+
+[[visualize_sim_object]]
+    name = "MyCell"
+    additional_data_members = ["diameter_", "counter_sub_quant_", "max_diam_", "cell_color_", "cell_type_" ]
+
+# Time between two simulation steps, in hours. Default value: 0.01
+#[simulation]
+#    time_step = 0.01
+#
