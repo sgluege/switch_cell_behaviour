@@ -34,13 +34,13 @@ class MyCell : public Cell {  // our object extends the Cell object
 
     public:
         MyCell() {}
-        explicit MyCell(const std::array<double, 3>& position) : Base(position) {}
+        explicit MyCell(const std::array<double, 3>& position) : Base(position) {
             // init cell with type 1, color 0 and max_diam = 10
-//            cell_type_ = 1;
-//            cell_color_ = 0;
-//            counter_sub_quant_ = intracellular_substance_quantity; // init with type 1 and specific intracellular_substance_quantity
-//            max_diam_ = 10;
-//        }
+            cell_type_ = 1;
+            cell_color_ = 0;
+            counter_sub_quant_ = intracellular_substance_quantity; // init with type 1 and specific intracellular_substance_quantity
+            max_diam_ = 10;
+        }
 
         /// If MyCell divides, daughter 2 copies the data members from the mother
         MyCell(const Event& event, SimObject* other, uint64_t new_oid = 0)
@@ -143,18 +143,18 @@ struct GeneralModule : public BaseBiologyModule {
         if (cell->GetDiameter() < cell->GetMaxDiam()) { // max_diam not reached
             cell->SetDiameter(cell->GetDiameter() + 0.2); // grow cell diameter by adding some number
         } else { // max diam reached -> divide cell
-            auto &&daughter = cell->Divide();
-            daughter->SetDiameter(default_cell_diameter);  // init daughter with default diameter
+            auto&& daughter = cell->Divide();
+            // daughter take the cell_color_ value of her mother
+            daughter->SetDiameter(default_cell_diameter);
         }
     }
 
 };
 
 
-
 inline int Simulate(int argc, const char** argv) {
     // set parameters of the simulation
-    auto set_param = [](auto* param) {
+    auto set_param = [](Param* param) {
         param->bound_space_ = true;
         param->min_bound_ = -50;
         param->max_bound_ = 50;  // plate of 100*100
@@ -165,7 +165,7 @@ inline int Simulate(int argc, const char** argv) {
 
     // Define initial model - in this example: single cell at origin
     auto* rm = simulation.GetResourceManager();
-    auto* param = simulation.GetParam();
+    //auto* param = simulation.GetParam();
 
     // allocate the correct number of cell in our cells structure before
 
