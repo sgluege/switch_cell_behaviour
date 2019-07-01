@@ -5,3 +5,10 @@ step based on the `cell_type`, either `type1behaviour()` or `type2behaviour()` i
 
 Simulation starts with `cell_type=1` and is switched to `cell_type=2` when the  intracellular substance quantity `counter_sub_quant` falls below a predefind threshold.
 
+-----------------
+##### BioDynaMo
+```
+$ biodynamo --version
+v0.1.0-371-g7e4f5bd5
+
+```
