@@ -17,6 +17,5 @@ Yet compilation fails with error:
 ##### BioDynaMo
 ```
 $ biodynamo --version
-v0.1.0-371-g7e4f5bd5
-
+v0.1.0-374-g59d6ef77
 ```

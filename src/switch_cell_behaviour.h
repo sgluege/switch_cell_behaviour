@@ -34,7 +34,7 @@ class MyCell : public Cell {  // our object extends the Cell object
 
     public:
         MyCell() {}
-        explicit MyCell(const std::array<double, 3>& position) : Base(position) {
+        explicit MyCell(const Double3& position) : Base(position) {  // const std::array<double, 3>& position (<- old version)
             // init cell with type 1, color 0 and max_diam = 10
             cell_type_ = 1;
             cell_color_ = 0;
